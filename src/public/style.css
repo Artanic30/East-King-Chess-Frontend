@@ -1,0 +1,25 @@
+.theme-dark {
+    background-color: lightgrey;
+}
+
+.login-img {
+    height: 300px;
+}
+
+.login-form {
+  max-width: 300px;
+}
+
+.login-form-forgot {
+  float: right;
+}
+
+.login-form-button {
+  width: 100%;
+}
+
+.state-button {
+    height: 40px;
+    padding-right: 0 !important;
+}
+

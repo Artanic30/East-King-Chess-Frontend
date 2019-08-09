@@ -1,0 +1,71 @@
+.ant-carousel .slick-slide {
+  text-align: center;
+  line-height: 100px;
+  background: lightgrey;
+  overflow: hidden;
+}
+
+.ant-carousel .slick-slide h3 {
+  color: #fff;
+}
+
+
+.main-carousel {
+    margin: 3% 5% 20% 5%;
+}
+
+.side-carouselOne {
+    margin: 15% 0 30% 30%;
+}
+
+.side-carouselTwo {
+    margin: 15% 30% 30% 0;
+}
+
+.margin-top {
+    margin-top: 4%;
+}
+
+.register-card {
+    margin-top: 10%;
+    min-height: 500px;
+    padding-top: 100px;
+}
+
+.sky {
+    background-image: url('../assets/background.jpg');
+    height: 800px;
+}
+
+.bigSmile {
+    margin: 10% 10% 10% 10%;
+    width: 100px;
+    align-items: center;
+}
+
+.side-bar {
+    background: white;
+    height: 800px;
+}
+
+.space-around {
+    padding: 3%;
+}
+
+.no-wrap {
+    display: flex;
+    flex-wrap: nowrap;
+}
+
+.chessButton {
+    width: 150px;
+    height: 150px;
+    border: 2px solid black;
+}
+
+.login-button {
+    float: right;
+    height: 62px;
+    padding-top: 5px;
+}
+
