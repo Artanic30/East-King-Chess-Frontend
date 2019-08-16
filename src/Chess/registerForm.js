@@ -4,11 +4,11 @@ import {
   Tooltip,
   Icon,
   Button,
+  notification
 } from 'antd';
 import React from 'react';
 import './style.css';
 import Provider from '../public/axios/provider'
-
 
 
 class RegistrationForm extends React.Component {
@@ -27,7 +27,19 @@ class RegistrationForm extends React.Component {
         data.append('password', values.password);
         data.append('email', values.email);
         Provider.post('http://127.0.0.1:8000/api/register', data).then(response => {
-
+          if (response.data.status === 'pass') {
+            notification.success({
+              message: 'Success!',
+              description: response.data.msg,
+              top: 65
+            });
+          } else {
+            notification.error({
+              message: 'Error occurs!',
+              description: response.data.msg,
+              top: 65
+            });
+          }
         })
       }
     });

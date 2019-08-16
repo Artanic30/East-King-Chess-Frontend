@@ -8,24 +8,28 @@ import { Link } from 'react-router-dom'
 class NormalLoginForm extends React.Component {
   handleSubmit = e => {
     e.preventDefault();
+    console.log(this.props);
     this.props.form.validateFields((err, values) => {
       if (!err) {
           let data = new FormData();
           data.append('username', values.username);
           data.append('password', values.password);
-          console.log('called here!');
           Provider.post('http://127.0.0.1:8000/api/login', data).then(response => {
               if (response.data.msg === 'success') {
-                  console.log('called');
                   store.login(true);
                   notification.success({
-                    message: 'Success!',
-                    description: '登录成功！',
-                });
+                      message: 'Success!',
+                      description: '登录成功！',
+                      top: 65
+                  });
+                  setTimeout(() => {
+                      this.props.closeDrawer()
+                  }, 1000)
               } else {
                   notification.error({
-                    message: 'Failure',
-                    description: response.data.msg,
+                      message: 'Failure',
+                      description: response.data.msg,
+                      top: 65
                 });
               }
           })
@@ -69,7 +73,7 @@ class NormalLoginForm extends React.Component {
           <Button type="primary" htmlType="submit" className="login-form-button">
             Log in
           </Button>
-            Or <Link to="/register">register now!</Link>
+            Or <Link to={'/register'}>register now!</Link>
         </Form.Item>
       </Form>
     );

@@ -20,6 +20,7 @@ class State extends React.Component {
                 notification.success({
                     message: 'Success!',
                     description: response.data.msg,
+                    top: 65
                 });
             })
         }

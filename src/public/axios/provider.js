@@ -8,7 +8,7 @@ const Provider = {
             withCredentials: true,
             headers: {
                 'X-CSRFToken': getCookie('csrftoken'),
-                'Content-Type': 'application/x-www-form-urlencoded'
+                'Content-Type': 'application/x-www-form-urlencoded',
             },
         });
     },

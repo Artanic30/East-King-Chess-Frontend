@@ -20,6 +20,7 @@ class GameBoard extends React.Component {
 
     componentDidMount() {
         Provider.get('http://127.0.0.1:8000/api').then(response => {
+            console.log(response.data)
             this.setState({
                     chessBoard: response.data.board
             });
@@ -27,7 +28,6 @@ class GameBoard extends React.Component {
     };
 
     componentDidUpdate(prevProps, prevState, snapshot) {
-        console.log(prevProps, prevState, snapshot)
     };
 
     getPlayerInfo = (player) => {
@@ -58,22 +58,22 @@ class GameBoard extends React.Component {
                 row: row,
                 col: col,
             }).then((response) => {
-            console.log(response);
             if (response.data.msg === 'no') {
                 notification.error({
-                message: 'Operation fail',
-                description: 'You can not make that move!',
-            });
-            }
-            if (response.data.msg === 'NA') {
+                    message: 'Operation fail',
+                    description: 'You can not make that move!',
+                    top: 65
+                });
+            } else if (response.data.msg === 'NA') {
                 this.setState({
                     chessBoard: response.data.matrix
-            });
+                });
             } else {
-                notification.error({
-                message: 'Result',
-                description: response.data.msg,
-            });
+                notification.info({
+                    message: 'Result',
+                    description: response.data.msg,
+                    top: 65
+                });
                 this.setState({
                     endGame: true,
                 })
@@ -82,6 +82,7 @@ class GameBoard extends React.Component {
                 notification.error({
                     message: 'Oops..',
                     description: '获取信息失败，请检查你的网络',
+                    top: 65
                 });
             })
         }

@@ -83,7 +83,7 @@ class Header extends React.Component {
                                <LoginState />
                            </Menu.Item>
                            : <Menu.Item key='login' className={'login-button'}>
-                            <Button type="primary" onClick={this.showDrawer}>
+                            <Button type="primary" onClick={this.showDrawer} className={'header-button'}>
                               Login
                             </Button>
                             <Drawer
@@ -97,7 +97,7 @@ class Header extends React.Component {
                                 <Row>
                                     <Col span={5} />
                                     <Col span={8}>
-                                        <LoginForm />
+                                        <LoginForm closeDrawer={this.onClose} />
                                     </Col>
                                     <Col span={8} type={'flex'} justify={'center'} align={'center'}>
                                         <img src={require('../../assets/chess.jpg')} alt={''} className={'login-img'}/>
