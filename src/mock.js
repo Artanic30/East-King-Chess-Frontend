@@ -90,14 +90,27 @@ const Login = () => {
     }
 };
 
+const MatchInit = () => {
+    let choice = 1;
+    if (choice === 1) {
+        return {
+            msg: 'success',
+        }
+    } else {
+        return {
+            msg: 'Time out error!!',
+        }
+    }
+};
 
 Mock.mock(/test\/api/, 'get', test);
+Mock.mock(/[a-z/]+\/127.0.0.1:8000\/api\/match\/init/, 'get', MatchInit);
 Mock.mock(/[a-z/]+\/127.0.0.1:8000\/api\/profile\/[0-9a-zA-Z]+/, 'get', Profile);
 Mock.mock(/[a-z/]+\/127.0.0.1:8000\/api\/update/, 'post', BoardUpdate);
 Mock.mock(/[a-z/]+\/127.0.0.1:8000\/api\/register/, 'post', Register);
 Mock.mock(/[a-z/]+\/127.0.0.1:8000\/api\/login/, 'post', Login);
 Mock.mock(/[a-z/]+\/127.0.0.1:8000\/api\/logout/, 'get', Logout);
-Mock.mock(/[a-z/]+\/127.0.0.1:8000\/api/, 'get', Profile);
+Mock.mock(/[a-z/]+\/127.0.0.1:8000\/api/, 'get', Board);
 
 
 

@@ -62,11 +62,11 @@ class Header extends React.Component {
                                 </Row>
                             </Link>
                         </Menu.Item>
-                        <Menu.Item key="gameBoard">
-                            <Link to={'/gameBoard'}>
+                        <Menu.Item key="matching">
+                            <Link to={'/matching'}>
                                 <Row>
                                     <Col span={6}><Icon type="table" /></Col>
-                                    <Col span={18}><h1>GameBoard</h1></Col>
+                                    <Col span={18}><h1>Matching</h1></Col>
                                 </Row>
                             </Link>
                         </Menu.Item>

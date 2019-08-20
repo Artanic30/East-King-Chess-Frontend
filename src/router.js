@@ -6,6 +6,7 @@ import Register from './Chess/register'
 import Profile from './Chess/profile'
 import GameBoard from './Chess/gameboard'
 import ScoreBoard from './Chess/scoreboard'
+import Matching from './Chess/matching'
 
 
 
@@ -18,6 +19,7 @@ class AppRouter extends React.Component {
                     <Route path='/register' component={Register} />
                     <GuardRoute path='/profile/:user_id' component={Profile} />
                     <GuardRoute path='/gameBoard' component={GameBoard} />
+                    <GuardRoute path='/Matching' component={Matching} />
                     <GuardRoute path='/scoreBoard' component={ScoreBoard} />
                     <Route component={Index} />
                 </Switch>

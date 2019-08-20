@@ -2,13 +2,12 @@ import React from 'react';
 import './style.css';
 import Header from '../public/header/header.js'
 import {Col, Row, Card, Carousel} from "antd";
-import Provider from '../public/axios/provider'
+
 
 const { Meta } = Card;
 const Description = '东皇棋是源自于公元前2000年古埃及文明创始后的四千年由一位来自古中国的传人发明';
 const Rules = '东皇棋游戏规则：出现连续相邻的三个子判负，无论方向是正方向或斜方向。三个子以上相邻则判定胜利';
 const Nowadays = '东皇棋如今流行于上海某高校大一新生之中，按寝室不同分为武当派，峨眉派以及华山派，各派均有身怀绝技的掌门人';
-
 
 
 class Index extends React.Component {
@@ -43,12 +42,6 @@ class Index extends React.Component {
         )
     };
 
-    componentWillMount() {
-        console.log('Request test!!!');
-        Provider.get(`test/api`).then(response => {
-            console.log(response.data)
-        })
-    }
 
     onChange = (index) => {
         this.sideCarouselOne.current.slick.slickGoTo(index);
@@ -61,7 +54,7 @@ class Index extends React.Component {
                   <Row>
                     <Col><Header site='index' /></Col>
                   </Row>
-                  <Row className={'margin-top'}>
+                  <Row className={'index-background'}>
                     <Col span={8}>
                        {this.getCards(this.sideCarouselOne, 'side-carouselOne', false)}
                     </Col>

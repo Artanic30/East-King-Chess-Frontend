@@ -19,8 +19,13 @@ class GameBoard extends React.Component {
     };
 
     componentDidMount() {
+        Provider.get('http://127.0.0.1:8000/api/players').then(response => {
+            this.setState({
+                playerOne: response.data.playerOne,
+                playerTwo: response.data.playerTwo
+            });
+        })
         Provider.get('http://127.0.0.1:8000/api').then(response => {
-            console.log(response.data)
             this.setState({
                     chessBoard: response.data.board
             });
