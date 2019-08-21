@@ -51,15 +51,17 @@ class ScoreBoard extends React.Component {
 
                 notification.success({
                     message: 'Result',
-                    description: this.state.msg
+                    description: response.data.msg,
+                    top: 65
                 });
                 setTimeout(() => {
                     this.props.history.push('/gameBoard')
-                }, 5000)
+                }, 10000)
             } else {
                 notification.error({
                     message: 'Fail!',
-                    description: response.data.msg
+                    description: response.data.msg,
+                    top: 65
                   });
             }
         })

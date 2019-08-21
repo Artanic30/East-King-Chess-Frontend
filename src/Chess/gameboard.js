@@ -9,9 +9,16 @@ class GameBoard extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            playerOne: 'test_nameOne',
-            playerTwo: 'test_nameTwo',
+            players: [
+                {
+                    name: 'one'
+                },
+                {
+                    name: 'two'
+                }
+            ],
             endFame: false,
+            rotating: true,
             chessBoard: new Array(5).fill(new Array(5).fill(''))
         };
         this.getPlayerInfo = this.getPlayerInfo.bind(this);
@@ -20,27 +27,51 @@ class GameBoard extends React.Component {
 
     componentDidMount() {
         Provider.get('http://127.0.0.1:8000/api/players').then(response => {
-            this.setState({
-                playerOne: response.data.playerOne,
-                playerTwo: response.data.playerTwo
-            });
+            if (response.data.msg === 'success') {
+                this.setState({
+                    players: response.data.players
+                });
+                notification.success({
+                    message: 'Success!',
+                    description: 'Game is ready to begin!',
+                    top: 65
+                });
+            } else {
+                notification.error({
+                    message: 'Fail!',
+                    description: response.data.msg,
+                    top: 65
+                });
+                setTimeout(() => {
+                    this.props.history.push('/matching')
+                }, 3000)
+            }
+
         })
         Provider.get('http://127.0.0.1:8000/api').then(response => {
             this.setState({
-                    chessBoard: response.data.board
+                chessBoard: response.data.board
             });
         })
+        setInterval(() => {
+           this.setState({
+               rotating: !this.state.rotating
+           })
+        }, 2000)
     };
 
-    componentDidUpdate(prevProps, prevState, snapshot) {
-    };
 
-    getPlayerInfo = (player) => {
+    getPlayerInfo = (player, rotating) => {
         return (
             <React.Fragment>
                 <Row type={'flex'} justify={'center'}>
                     <Col>
-                        <img alt="Loading..." src={require("../assets/userImage.jpg")} className={'bigSmile'} />
+                        {rotating ?
+                             <img alt="Loading..." style={{ transform: 'rotateY(180deg)' }} src={require("../assets/userImage.jpg")} className={'bigSmile'} />
+                             :
+                             <img alt="Loading..." src={require("../assets/userImage.jpg")} className={'bigSmile'} />
+                        }
+
                     </Col>
                 </Row>
                 <Row className={'space-around'}>
@@ -124,7 +155,7 @@ class GameBoard extends React.Component {
                 <Row>
                     <Col span={4}>
                         <div className={'side-bar'}>
-                            { this.getPlayerInfo(this.state.playerOne) }
+                            { this.getPlayerInfo(this.state.players[0].name, this.state.rotating) }
                          </div>
                     </Col>
                     <Col span={16}>
@@ -150,7 +181,7 @@ class GameBoard extends React.Component {
                     </Col>
                     <Col span={4}>
                          <div className={'side-bar'}>
-                            { this.getPlayerInfo(this.state.playerTwo) }
+                            { this.getPlayerInfo(this.state.players[1].name, !this.state.rotating) }
                          </div>
                     </Col>
                 </Row>
