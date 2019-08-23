@@ -103,13 +103,48 @@ const MatchInit = () => {
     }
 };
 
+const Players = () => {
+    let choice = 1;
+    if (choice === 1) {
+        return {
+            msg: 'success',
+            players: [
+                {
+                    name: 'First player'
+                },
+                {
+                    name: 'Second player'
+                }
+            ]
+        }
+    } else {
+        return {
+            msg: 'Match does not started!!',
+        }
+    }
+};
+
+const Scores = () => {
+    let result = []
+    for (let i = 1;i < 6;i++) {
+        let user = {
+            name: Random.name(),
+            wins: Random.natural(10, 100),
+            lose: Random.natural(5, 50)
+        };
+        result.push(user)
+    }
+    return result
+};
 Mock.mock(/test\/api/, 'get', test);
 Mock.mock(/[a-z/]+\/127.0.0.1:8000\/api\/match\/init/, 'get', MatchInit);
-Mock.mock(/[a-z/]+\/127.0.0.1:8000\/api\/profile\/[0-9a-zA-Z]+/, 'get', Profile);
+Mock.mock(/[a-z/]+\/127.0.0.1:8000\/api\/profile\/[0-9a-zA-Z:]+/, 'get', Profile);
 Mock.mock(/[a-z/]+\/127.0.0.1:8000\/api\/update/, 'post', BoardUpdate);
+Mock.mock(/[a-z/]+\/127.0.0.1:8000\/api\/players/, 'get', Players);
 Mock.mock(/[a-z/]+\/127.0.0.1:8000\/api\/register/, 'post', Register);
 Mock.mock(/[a-z/]+\/127.0.0.1:8000\/api\/login/, 'post', Login);
 Mock.mock(/[a-z/]+\/127.0.0.1:8000\/api\/logout/, 'get', Logout);
+Mock.mock(/[a-z/]+\/127.0.0.1:8000\/api\/scores/, 'get', Scores);
 Mock.mock(/[a-z/]+\/127.0.0.1:8000\/api/, 'get', Board);
 
 
