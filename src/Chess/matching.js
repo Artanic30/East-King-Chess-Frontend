@@ -8,7 +8,6 @@ import Provider from '../public/axios/provider'
 class ScoreBoard extends React.Component {
     constructor(props) {
         super(props);
-        console.log(props);
         this.state = {
             loading: false,
             resp: false,
@@ -41,30 +40,34 @@ class ScoreBoard extends React.Component {
         this.setState({
             loading: true
         });
-        Provider.get('http://127.0.0.1:8000/api/match/init').then(response => {
-            if (response.data.msg === 'success') {
-                setTimeout(() => {
-                    this.setState({
-                        resp: true
-                    });
-                }, 2000);
+        let intervalMatch = setInterval(() => {
+             Provider.get('http://127.0.0.1:8000/api/match/init').then(response => {
+                if (response.data.msg === 'success') {
+                    setTimeout(() => {
+                        this.setState({
+                            resp: true
+                        });
+                    }, 2000);
 
-                notification.success({
-                    message: 'Result',
-                    description: response.data.msg,
-                    top: 65
-                });
-                setTimeout(() => {
-                    this.props.history.push('/gameBoard')
-                }, 10000)
-            } else {
-                notification.error({
-                    message: 'Fail!',
-                    description: response.data.msg,
-                    top: 65
-                  });
-            }
-        })
+                    notification.success({
+                        message: 'Result',
+                        description: response.data.msg,
+                        top: 65
+                    });
+                    setTimeout(() => {
+                        this.props.history.push('/gameBoard')
+                    }, 10000)
+                } else if (response.data.msg === 'pending') {
+                } else {
+                    notification.error({
+                        message: 'Fail!',
+                        description: response.data.msg,
+                        top: 65
+                      });
+                    clearInterval(intervalMatch);
+                }
+            })
+        }, 1000);
     };
 
     getTips = () => {
