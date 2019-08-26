@@ -20,6 +20,7 @@ class Profile extends React.Component {
         this.dislike = this.dislike.bind(this);
         this.smile = this.smile.bind(this);
     };
+
     componentWillMount () {
         // check whether the user owns the profile
         Provider.get(`http://127.0.0.1:8000/api/profile/${this.props.match.params.user_id}`).then(response => {

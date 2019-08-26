@@ -8,7 +8,7 @@ const columns = [
   {
     title: 'Name',
     dataIndex: 'name',
-    render: text => <a>{text}</a>,
+    render: text => <a href={`http://127.0.0.1:8000/profile/${text}`}>{text}</a>,
     width: '20%',
   },
   {
@@ -37,7 +37,6 @@ class ScoreBoard extends React.Component {
 
     componentDidMount() {
         Provider.get('http://127.0.0.1:8000/api/scores').then(response => {
-            console.log(response.data)
             this.setState({
                 data: response.data,
                 loading: false

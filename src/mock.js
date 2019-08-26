@@ -136,6 +136,14 @@ const Scores = () => {
     }
     return result
 };
+
+const StateInit = () => {
+    return {
+        state: true
+    }
+};
+
+
 Mock.mock(/test\/api/, 'get', test);
 Mock.mock(/[a-z/]+\/127.0.0.1:8000\/api\/match\/init/, 'get', MatchInit);
 Mock.mock(/[a-z/]+\/127.0.0.1:8000\/api\/profile\/[0-9a-zA-Z:]+/, 'get', Profile);
@@ -145,6 +153,7 @@ Mock.mock(/[a-z/]+\/127.0.0.1:8000\/api\/register/, 'post', Register);
 Mock.mock(/[a-z/]+\/127.0.0.1:8000\/api\/login/, 'post', Login);
 Mock.mock(/[a-z/]+\/127.0.0.1:8000\/api\/logout/, 'get', Logout);
 Mock.mock(/[a-z/]+\/127.0.0.1:8000\/api\/scores/, 'get', Scores);
+Mock.mock(/[a-z/]+\/127.0.0.1:8000\/api\/init/, 'get', StateInit);
 Mock.mock(/[a-z/]+\/127.0.0.1:8000\/api/, 'get', Board);
 
 

@@ -8,8 +8,6 @@ import LoginState from './loginstate'
 
 
 
-
-
 class Header extends React.Component {
     constructor(props) {
         super(props);
@@ -21,7 +19,6 @@ class Header extends React.Component {
         this.showDrawer = this.showDrawer.bind(this);
         this.onClose = this.onClose.bind(this);
     };
-
 
     handleClick = e => {
         this.setState({
@@ -40,6 +37,7 @@ class Header extends React.Component {
           visible: false,
         });
     };
+
 
     render () {
         return (
