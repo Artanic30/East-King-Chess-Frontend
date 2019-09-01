@@ -125,7 +125,7 @@ const Players = () => {
 };
 
 const Scores = () => {
-    let result = []
+    let result = [];
     for (let i = 1;i < 6;i++) {
         let user = {
             name: Random.name(),

@@ -43,6 +43,7 @@ class ScoreBoard extends React.Component {
         let intervalMatch = setInterval(() => {
              Provider.get('http://127.0.0.1:8000/api/match/init').then(response => {
                 if (response.data.msg === 'success') {
+                    clearInterval(intervalMatch);
                     setTimeout(() => {
                         this.setState({
                             resp: true
@@ -54,6 +55,7 @@ class ScoreBoard extends React.Component {
                         description: response.data.msg,
                         top: 65
                     });
+
                     setTimeout(() => {
                         this.props.history.push('/gameBoard')
                     }, 10000)

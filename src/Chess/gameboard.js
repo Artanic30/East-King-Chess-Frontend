@@ -47,12 +47,12 @@ class GameBoard extends React.Component {
                 }, 3000)
             }
 
-        })
+        });
         Provider.get('http://127.0.0.1:8000/api').then(response => {
             this.setState({
                 chessBoard: response.data.board
             });
-        })
+        });
         setInterval(() => {
            this.setState({
                rotating: !this.state.rotating
