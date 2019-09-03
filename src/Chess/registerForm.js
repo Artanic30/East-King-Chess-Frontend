@@ -21,13 +21,12 @@ class RegistrationForm extends React.Component {
     e.preventDefault();
     this.props.form.validateFieldsAndScroll((err, values) => {
       if (!err) {
-        console.log('Received values of form: ', values);
         let data = new FormData();
         data.append('username', values.nickname);
         data.append('password', values.password);
         data.append('email', values.email);
         Provider.post('http://127.0.0.1:8000/api/register', data).then(response => {
-          if (response.data.status === 'pass') {
+          if (response.data.status === 'success') {
             notification.success({
               message: 'Success!',
               description: response.data.msg,

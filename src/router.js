@@ -34,7 +34,7 @@ class AppRouter extends React.Component {
                     <Route path='/index' component={Index} />
                     <Route path='/register' component={Register} />
                     <GuardRoute path='/profile/:user_id' component={Profile} />
-                    <GuardRoute path='/gameBoard' component={GameBoard} />
+                    <GuardRoute path='/gameBoard/:board_id' component={GameBoard} />
                     <GuardRoute path='/Matching' component={Matching} />
                     <GuardRoute path='/scoreBoard' component={ScoreBoard} />
                     <Route component={Index} />

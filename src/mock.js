@@ -95,6 +95,7 @@ const MatchInit = () => {
     if (choice === 1) {
         return {
             msg: 'success',
+            board_id: 23333
         }
     } else {
         return {
@@ -148,13 +149,13 @@ Mock.mock(/test\/api/, 'get', test);
 Mock.mock(/[a-z/]+\/127.0.0.1:8000\/api\/match\/init/, 'get', MatchInit);
 Mock.mock(/[a-z/]+\/127.0.0.1:8000\/api\/profile\/[0-9a-zA-Z:]+/, 'get', Profile);
 Mock.mock(/[a-z/]+\/127.0.0.1:8000\/api\/update/, 'post', BoardUpdate);
-Mock.mock(/[a-z/]+\/127.0.0.1:8000\/api\/players/, 'get', Players);
+Mock.mock(/[a-z/]+\/127.0.0.1:8000\/api\/players\/[0-9]+/, 'get', Players);
 Mock.mock(/[a-z/]+\/127.0.0.1:8000\/api\/register/, 'post', Register);
 Mock.mock(/[a-z/]+\/127.0.0.1:8000\/api\/login/, 'post', Login);
 Mock.mock(/[a-z/]+\/127.0.0.1:8000\/api\/logout/, 'get', Logout);
 Mock.mock(/[a-z/]+\/127.0.0.1:8000\/api\/scores/, 'get', Scores);
 Mock.mock(/[a-z/]+\/127.0.0.1:8000\/api\/init/, 'get', StateInit);
-Mock.mock(/[a-z/]+\/127.0.0.1:8000\/api/, 'get', Board);
+Mock.mock(/[a-z/]+\/127.0.0.1:8000\/api\/[0-9a-zA-Z:]+/, 'get', Board);
 
 
 

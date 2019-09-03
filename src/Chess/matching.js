@@ -57,8 +57,8 @@ class ScoreBoard extends React.Component {
                     });
 
                     setTimeout(() => {
-                        this.props.history.push('/gameBoard')
-                    }, 10000)
+                        this.props.history.push(`/gameBoard/${response.data.board_id}`)
+                    }, 1)
                 } else if (response.data.msg === 'pending') {
                 } else {
                     notification.error({
