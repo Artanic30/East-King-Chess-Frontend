@@ -41,7 +41,7 @@ class ScoreBoard extends React.Component {
             loading: true
         });
         let intervalMatch = setInterval(() => {
-             Provider.get('http://127.0.0.1:8000/api/match/init').then(response => {
+             Provider.get('http://127.0.0.1:8000/api/game/init_match/').then(response => {
                 if (response.data.msg === 'success') {
                     clearInterval(intervalMatch);
                     setTimeout(() => {

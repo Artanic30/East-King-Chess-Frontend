@@ -14,7 +14,7 @@ class NormalLoginForm extends React.Component {
           let data = new FormData();
           data.append('username', values.username);
           data.append('password', values.password);
-          Provider.post('http://127.0.0.1:8000/api/login', data).then(response => {
+          Provider.post('http://127.0.0.1:8000/api/account/login/', data).then(response => {
               if (response.data.msg === 'success') {
                   store.login(true);
                   notification.success({

@@ -16,7 +16,7 @@ class State extends React.Component {
     handleMenuClick = (e) => {
         if (e.key === '2') {
             store.logout();
-            Provider.get('http://127.0.0.1:8000/api/logout').then(response => {
+            Provider.get('http://127.0.0.1:8000/api/account/logout/').then(response => {
                 notification.success({
                     message: 'Success!',
                     description: response.data.msg,

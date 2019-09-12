@@ -28,7 +28,7 @@ class GameBoard extends React.Component {
 
     componentDidMount() {
         // Acquire players' information
-        Provider.get(`http://127.0.0.1:8000/api/players/${this.props.match.params.board_id}`).then(response => {
+        Provider.get(`http://127.0.0.1:8000/api/game/${this.props.match.params.board_id}/players/`).then(response => {
             if (response.data.msg === 'success') {
                 this.setState({
                     players: response.data.players
@@ -65,7 +65,7 @@ class GameBoard extends React.Component {
         let start = () => {
             a = setInterval(() => {
                 if (!this.state.endGame) {
-                    Provider.get(`http://127.0.0.1:8000/api/${this.props.match.params.board_id}`).then(response => {
+                    Provider.get(`http://127.0.0.1:8000/api/game/${this.props.match.params.board_id}/init_game/`).then(response => {
                         if (response.data.msg === 'success') {
                             this.setState({
                                 chessBoard: response.data.board
@@ -138,7 +138,7 @@ class GameBoard extends React.Component {
             let data = new FormData();
             data.append('row', row);
             data.append('col', col);
-            Provider.post(`http://127.0.0.1:8000/api/update/${this.props.match.params.board_id}`, data).then((response) => {
+            Provider.post(`http://127.0.0.1:8000/api/game/${this.props.match.params.board_id}/update_game/`, data).then((response) => {
             if (response.data.msg === 'no') {
                 // players' illegal move
                 notification.error({

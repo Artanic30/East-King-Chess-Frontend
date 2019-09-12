@@ -25,13 +25,16 @@ class RegistrationForm extends React.Component {
         data.append('username', values.nickname);
         data.append('password', values.password);
         data.append('email', values.email);
-        Provider.post('http://127.0.0.1:8000/api/register', data).then(response => {
+        Provider.post('http://127.0.0.1:8000/api/account/', data).then(response => {
           if (response.data.status === 'success') {
             notification.success({
               message: 'Success!',
               description: response.data.msg,
               top: 65
             });
+            setTimeout(() => {
+              this.props.history.push('')
+            }, 5000)
           } else {
             notification.error({
               message: 'Error occurs!',

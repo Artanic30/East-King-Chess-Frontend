@@ -23,8 +23,7 @@ class Profile extends React.Component {
 
     componentWillMount () {
         // check whether the user owns the profile
-        Provider.get(`http://127.0.0.1:8000/api/profile/${this.props.match.params.user_id}`).then(response => {
-            console.log(response)
+        Provider.get(`http://127.0.0.1:8000/api/account/${this.props.match.params.user_id}/`).then(response => {
             this.setState({
                 nickname: response.data.nickname,
                 games: response.data.games,
