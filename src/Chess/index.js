@@ -1,7 +1,8 @@
 import React from 'react';
 import './style.css';
-import Header from '../public/header/header.js'
+import Header from '../public/header/header.js';
 import {Col, Row, Card, Carousel} from "antd";
+import store from '../public/store/UserInfo';
 
 
 const { Meta } = Card;
@@ -41,6 +42,10 @@ class Index extends React.Component {
             </Carousel>
         )
     };
+
+    componentWillMount() {
+        console.log('index created', store.is_auth);
+    }
 
 
     onChange = (index) => {

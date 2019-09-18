@@ -1,7 +1,6 @@
 import React from 'react'
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
 import GuardRoute from './public/GuardRouter'
-import Provider from './public/axios/provider'
 import { notification } from "antd";
 import store from './public/store/UserInfo'
 import Index from './Chess/index.js'
@@ -15,17 +14,15 @@ import Matching from './Chess/matching'
 
 class AppRouter extends React.Component {
     componentWillMount() {
-        Provider.get(`http://127.0.0.1:8000/api/init`).then(response => {
-            if (response.data.state) {
-                store.login(true);
-                notification.success({
-                    message: 'Success!',
-                    description: '您已经登陆！',
-                    top: 65
-                });
-            }
-        })
+        if (store.is_auth) {
+            notification.success({
+                message: 'Success!',
+                description: '您已经登陆！',
+                top: 65
+            });
+        }
     }
+
 
     render () {
         return (

@@ -146,16 +146,16 @@ const StateInit = () => {
 
 
 Mock.mock(/test\/api/, 'get', test);
-Mock.mock(/[a-z/]+\/127.0.0.1:8000\/api\/match\/init/, 'get', MatchInit);
-Mock.mock(/[a-z/]+\/127.0.0.1:8000\/api\/profile\/[0-9a-zA-Z:]+/, 'get', Profile);
-Mock.mock(/[a-z/]+\/127.0.0.1:8000\/api\/update/, 'post', BoardUpdate);
-Mock.mock(/[a-z/]+\/127.0.0.1:8000\/api\/players\/[0-9]+/, 'get', Players);
-Mock.mock(/[a-z/]+\/127.0.0.1:8000\/api\/register/, 'post', Register);
-Mock.mock(/[a-z/]+\/127.0.0.1:8000\/api\/login/, 'post', Login);
-Mock.mock(/[a-z/]+\/127.0.0.1:8000\/api\/logout/, 'get', Logout);
+Mock.mock(/[a-z/]+\/127.0.0.1:8000\/api\/game\/init_match/, 'get', MatchInit);
+Mock.mock(/[a-z/]+\/127.0.0.1:8000\/api\/account\/[0-9a-zA-Z:]+/, 'get', Profile);
+Mock.mock(/[a-z/]+\/127.0.0.1:8000\/api\/game\/[0-9]+\/update_game/, 'post', BoardUpdate);
+Mock.mock(/[a-z/]+\/127.0.0.1:8000\/api\/game\/[0-9]+\/players/, 'get', Players);
+Mock.mock(/[a-z/]+\/127.0.0.1:8000\/api\/account\/register/, 'post', Register);
+Mock.mock(/[a-z/]+\/127.0.0.1:8000\/api\/account\/login/, 'post', Login);
+Mock.mock(/[a-z/]+\/127.0.0.1:8000\/api\/account\/logout/, 'get', Logout);
 Mock.mock(/[a-z/]+\/127.0.0.1:8000\/api\/scores/, 'get', Scores);
 Mock.mock(/[a-z/]+\/127.0.0.1:8000\/api\/init/, 'get', StateInit);
-Mock.mock(/[a-z/]+\/127.0.0.1:8000\/api\/[0-9a-zA-Z:]+/, 'get', Board);
+Mock.mock(/[a-z/]+\/127.0.0.1:8000\/api\/game\/[0-9]+\/init_game/, 'get', Board);
 
 
 

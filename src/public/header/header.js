@@ -13,7 +13,8 @@ class Header extends React.Component {
         super(props);
         this.state = {
             current: props.site,
-            visible: false
+            visible: false,
+            auth: false
         };
         this.handleClick = this.handleClick.bind(this);
         this.showDrawer = this.showDrawer.bind(this);
@@ -36,6 +37,13 @@ class Header extends React.Component {
         this.setState({
           visible: false,
         });
+    };
+
+    componentWillMount() {
+        console.log('header created', store.is_auth)
+        this.setState({
+            auth: store.is_auth
+        })
     };
 
 
@@ -76,7 +84,7 @@ class Header extends React.Component {
                                 </Row>
                             </Link>
                         </Menu.Item>
-                       { store.is_auth ?
+                       { this.state.auth ?
                            <Menu.Item key={'login'} className={'login-button'}>
                                <LoginState />
                            </Menu.Item>
